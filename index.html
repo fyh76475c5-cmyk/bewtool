@@ -61,7 +61,15 @@
     th, td { padding:7px 2px; }
     td.k { font-size:13px; line-height:1.25; padding-right:4px; }
     input.w { width:46px; font-size:16px; }
-    .cell { width:35px; height:35px; }
+    html, body { overflow-x:hidden; max-width:100%; }
+    table { table-layout:fixed; }
+    th:nth-child(1) { width:26%; }
+    th:nth-child(2) { width:15%; }
+    th:nth-child(n+3) { width:11.8%; }
+    th { font-size:11px; }
+    td.k { word-break:break-word; hyphens:auto; font-size:12px; }
+    input.w { width:100%; max-width:46px; padding:4px 0; }
+    .cell { width:100%; max-width:34px; height:32px; border-radius:6px; }
     .grade { font-size:34px; min-width:0; }
     .actions { margin-left:0; width:100%; }
     .actions .btn { flex:1; padding:11px 8px; font-size:14px; }
@@ -142,7 +150,7 @@ function render() {
   const rows = state[current];
   let h = `<h2>Bewertung: ${current}</h2>
     <div class="sub">Notenwerte: ${LEVELS.map(([l, n]) => `${l} = ${n}`).join(" · ")} &nbsp;|&nbsp; Gewichtung anpassbar</div>
-    <table><thead><tr><th class="k">Kriterium</th><th>Gewichtung</th>`
+    <table><thead><tr><th class="k">Kriterium</th><th>Gew.</th>`
     + LEVELS.map(([l, n]) => `<th>${l}<small>${n}</small></th>`).join("") + `</tr></thead><tbody>`;
   rows.forEach((r, i) => {
     h += `<tr><td class="k">${r.k}</td>
